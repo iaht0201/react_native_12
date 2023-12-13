@@ -1,20 +1,30 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+
+import { useFonts } from 'expo-font';
+import Welcome from './screen/Welcome';
+import AppLoading from 'expo-app-loading';
+import * as Font from 'expo-font';
+import { useEffect } from 'react';
+import RootStack from './navigators/RootStack';
 
 export default function App() {
+  async function _loadAsset() {
+    try {
+      await Font.loadAsync({
+        'Bold': require('./assets/fonts/Lato-Bold.ttf'),
+        'Regular': require('./assets/fonts/Lato-Regular.ttf')
+      });
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  useEffect(() => {
+    _loadAsset();
+  }, []);
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <RootStack />
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+
