@@ -6,8 +6,8 @@ import CardItem from "./CardItem";
 
 const CardList = styled.FlatList`
     width: 100%;
-    height: 200px;
-    flex : 1 ; 
+    height: 50px;
+    flex : 1.5 ; 
     padding-left:  25px; 
     padding-bottom: 15px ;
 `
